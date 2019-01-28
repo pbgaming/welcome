@@ -17,15 +17,4 @@ setTimeout(() => mohamed.send(`#role humans epic`), 4000)
 }
 });
 
-lient.on('guildMemberAdd', member => {
-  member.guild.fetchInvites().then(guildInvites => {
-    const ei = invites[member.guild.id];
-    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
-    const inviter = client.users.get(invite.inviter.id);
-    const channel = member.guild.channels.find("invite", "✽-welcome");
-     channel.send(`<@${member.user.id}> ** joined; ** Invited by ** <@${inviter.id}> ** `);
-  });
-});
-
-
 client.login(process.env.BOT_TOKEN);// لا تغير فيها شيء
