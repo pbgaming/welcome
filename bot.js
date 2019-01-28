@@ -6,7 +6,7 @@ const mohamed= member.guild.channels.get("520153404438347779");
 if(!mohamed) return;
 if(mohamed) {
 setTimeout(() => mohamed.send(`** Welcome To Epic Shop**    
-              -  **We Hope You Like It**  :gift_heart:`), 4000)        
+              **-**  **We Hope You Like It**  :gift_heart:`), 4000)        
 }
 });
 
