@@ -84,4 +84,31 @@ message.channel.createWebhook(message.author.username, message.author.avatarURL)
  }
 });
 
+client.on('message', message => {
+    let prefix = '$'
+    
+    if(message.author.bot) return;
+    if(message.content == prefix + 'help'){
+        let Hembed = new Discord.RichEmbed()
+     .setAuthor('BOT')    
+     .setColor("GRAY")
+     .setDescription(`
+     **Server Help List**
+broadcast =$all
+clear chat =$clear
+server info =$server
+close room =$close
+open room =$open
+close ticket =$closetk - $close
+hide room =$hide
+show room =$show
+say =$say
+`
+);
+    message.author.sendEmbed(Hembed);
+    message.channel.send('**تم الارسال في الخاص**');
+
+}
+});
+
 client.login(process.env.BOT_TOKEN);// لا تغير فيها شيء
