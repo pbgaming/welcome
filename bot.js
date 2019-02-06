@@ -159,4 +159,17 @@ client.on('message', message => {
 }
 });
 
+var prefix = "$"
+client.on("message", (message) => {
+    if (message.content.startsWith("${prefix}kick")) {
+      if(!message.member.hasPermission('KICK_MEMBERS')) return message.reply('? ماعندك الصلاحيات');
+        var member= message.mentions.members.first();
+        member.kick().then((member) => {
+            message.channel.send(member.displayName + " مع السلامه :wave: ");
+        }).catch(() => {
+            message.channel.send("Error -_-");
+        });
+    }
+});
+
 client.login(process.env.BOT_TOKEN);// لا تغير فيها شيء
