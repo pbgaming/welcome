@@ -159,9 +159,8 @@ client.on('message', message => {
 }
 });
 
-var prefix = "$"
 client.on("message", (message) => {
-    if (message.content.startsWith("${prefix}kick")) {
+    if (message.content.startsWith("$kick")) {
       if(!message.member.hasPermission('KICK_MEMBERS')) return message.reply('? ماعندك الصلاحيات');
         var member= message.mentions.members.first();
         member.kick().then((member) => {
@@ -170,6 +169,24 @@ client.on("message", (message) => {
             message.channel.send("Error -_-");
         });
     }
+});
+
+client.on('message', message => {
+  if (message.content === ('$bot')) {
+    message.channel.send({
+        embed: new Discord.RichEmbed()
+            .setAuthor(client.user.username,client.user.avatarURL)
+            .setThumbnail(client.user.avatarURL)
+            .setColor('RANDOM')
+            .addField('**Bot Ping**🚀 :' , [`${Date.now() - message.createdTimestamp}` + 'MS'], true)
+            .addField('**Servers**📚 :', [client.guilds.size], true)
+            .addField('**Channels**📝 :' , `[ ${client.channels.size} ]` , true)
+            .addField('**Users**🔮 :' ,`[ ${client.users.size} ]` , true)
+            .addField('**Bot Name**🔰 :' , `[ ${client.user.tag} ]` , true)
+            .addField('**Bot Owner**👑 :' , `[<@438379202031517697>]` , true)
+            .setFooter(message.author.username, message.author.avatarURL)
+    })
+}
 });
 
 client.login(process.env.BOT_TOKEN);// لا تغير فيها شيء
